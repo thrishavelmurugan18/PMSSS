@@ -31,14 +31,14 @@ export default function LoginPage({ setCurrentRole }) {
 
     setError("");
 
-    // Save role globally (this is the important part)
+    // Save role globally
     setCurrentRole(formData.role);
 
-    // Redirect based on role
+    // 🔴 THIS IS THE IMPORTANT FIX
     if (formData.role === "student") {
-      navigate("/student-dashboard");
+      navigate("/home");                 // Student → Home page
     } else if (formData.role === "admin") {
-      navigate("/admin-dashboard");
+      navigate("/admin-dashboard");      // Admin → Admin Dashboard
     }
   };
 

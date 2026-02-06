@@ -5,9 +5,12 @@
   font-family: "Segoe UI", sans-serif;
 }
 
+body {
+  background: #f3f4f6;
+}
+
 .admin-container {
   padding: 30px;
-  align-items: center;
   background: #f7f8fa;
 }
 
@@ -19,6 +22,17 @@
   margin-bottom: 25px;
 }
 
+.admin-header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .admin-header h2 {
   font-size: 26px;
 }
@@ -28,12 +42,36 @@
   font-size: 14px;
 }
 
+/* Back Button */
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: #4f46e5;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: #eef2ff;
+}
+
+.back-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Header Right */
 .admin-header-right {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
+/* Buttons */
 .export-btn {
   padding: 8px 14px;
   border-radius: 8px;

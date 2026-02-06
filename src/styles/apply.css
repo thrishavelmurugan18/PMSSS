@@ -1,27 +1,48 @@
-/* PAGE */
-.apply-container {
- width: 100%;
-  min-height: 100vh;
-  background: #f9fafb;
-  margin-left: 0%;
-   padding: 20px 40px;
-  display: flex;
-  flex-direction: fixed;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page-container {
+  width: 100vw;
+  min-height: 95vh;
+  background: #f3f4f6;
+  /*display: flex;*/
+  justify-content: center;
   align-items: center;
+  margin-left:0;
+  margin-right:0;
+  padding-top: 19px;
+  position:relative;
 }
 
-/* CENTER COLUMN */
-.apply-wrapper {
+/*.content-wrapper {
   width: 100%;
-  max-width: 1000px;
-  margin: relative;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+}*/
+
+.apply-container {
+  width: 100vw;
+ /* display: flex;*/
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
-/* HEADER – PERFECT CENTER */
+.apply-wrapper {
+  margin-right: 5vw;
+  margin-left: 5vw;
+}
+
+/* HEADER */
 .apply-header {
   width: 100%;
   position: relative;
-  height: 60px;
+  height: 70px;
+  margin-bottom: 10px;
 }
 
 .back-btn {
@@ -42,56 +63,67 @@
   text-align: center;
 }
 
+.title h2 {
+  margin: 0;
+}
+
+.title p {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
 /* PROGRESS BAR */
 .progress-bar {
   width: 100%;
   height: 6px;
-  background: #ddd;
+  background: #e5e7eb;
   border-radius: 6px;
-  margin: 20px 0;
+  margin-bottom: 25px;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  background: black;
+  background: #7c3aed;
   border-radius: 6px;
 }
 
-/* FORM CARD */
+/* FORM CARD (FLOATING CARD LOOK) */
 .form-card {
-  width: 100%;
   background: white;
-  padding: 22px;
-  border-radius: 10px;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.12);
-  margin-top: 10px;
+  padding: 15px;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  box-sizing: content-box;
+  
 }
 
 /* STEP HEADER */
 .step-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .step-circle {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   background: #7c3aed;
   color: white;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 /* GRID */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 15px;
+  gap: 18px;
+  margin-bottom: 15px;
 }
 
 /* INPUTS */
@@ -104,14 +136,14 @@ input,
 select,
 textarea {
   width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
+  padding: 11px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  margin-top: 6px;
 }
 
 textarea {
-  height: 80px;
+  height: 90px;
   resize: none;
 }
 
@@ -126,17 +158,21 @@ textarea {
 .primary {
   background: #7c3aed;
   color: white;
-  padding: 10px 22px;
+  padding: 11px 24px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+}
+
+.primary:hover {
+  background: #6d28d9;
 }
 
 .secondary {
   background: white;
-  border: 1px solid #ccc;
-  padding: 10px 22px;
-  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  padding: 11px 24px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -145,35 +181,27 @@ textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px dashed #ccc;
+  border: 1px dashed #d1d5db;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-top: 12px;
   background: #fafafa;
 }
 
-.upload-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .upload-btn {
   background: white;
-  border: 1px solid #ccc;
+  border: 1px solid #d1d5db;
   padding: 6px 14px;
   border-radius: 6px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 14px;
 }
 
 .upload-icon-img {
   width: 16px;
   height: 16px;
-  object-fit: contain;
 }
 
 /* RESPONSIVE */
@@ -184,18 +212,13 @@ textarea {
 
   .apply-header {
     height: auto;
-    padding: 10px 0;
   }
 
-  .back-btn {
-    position: static;
-    transform: none;
-    display: block;
-    margin-bottom: 5px;
-  }
-
+  .back-btn,
   .title {
     position: static;
     transform: none;
+    text-align: center;
+    display: block;
   }
 }

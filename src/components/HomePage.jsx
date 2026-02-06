@@ -177,7 +177,7 @@ export default function HomePage() {
 
       {/* FOOTER */}
       <footer>
-        <p>© 2024 PMSSS Portal. Smart India Hackathon</p>
+        <p>© 2026 PMSSS Portal</p>
       </footer>
     </div>
   );

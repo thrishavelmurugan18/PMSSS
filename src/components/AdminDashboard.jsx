@@ -1,4 +1,5 @@
 import "../styles/admin.css";
+import backIcon from "../assets/back.png";
 
 export default function AdminDashboard() {
   const applications = [
@@ -79,8 +80,14 @@ export default function AdminDashboard() {
 
       {/* Header */}
       <div className="admin-header">
-        <div>
-          <h2>Admin Dashboard</h2>
+        <div className="admin-header-left">
+          <div className="title-row">
+            <div className="back-btn" onClick={() => window.history.back()}>
+              <img src={backIcon} alt="Back" />
+              <span>Back</span>
+            </div>
+            <h2>Admin Dashboard</h2>
+          </div>
           <p>Paperless Scholarship Management System</p>
         </div>
 
@@ -140,7 +147,10 @@ export default function AdminDashboard() {
           </div>
 
           <div className="card-right">
-            <p><strong>Score:</strong> <span className="score">{app.score}</span></p>
+            <p>
+              <strong>Score:</strong>{" "}
+              <span className="score">{app.score}</span>
+            </p>
             <p><strong>Income:</strong> {app.income}</p>
             <div className="actions">
               <button className="view-btn">👁 View</button>
