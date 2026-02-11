@@ -224,3 +224,40 @@ body {
   background: #7c3aed;
   color: white;
 }
+/* Back inline before title */
+.back-inline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.back-inline img {
+  width: 14px;
+  height: 14px;
+}
+
+/* Profile + logout */
+.profile-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout-icon {
+  width: 36px;
+  height: 36px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.logout-icon img {
+  width: 16px;
+  height: 16px;
+}

@@ -88,7 +88,7 @@ export default function LoginPage({ setCurrentRole }) {
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
-                placeholder="••••••"
+                placeholder="......"
                 value={formData.password}
                 onChange={handleChange}
               />
