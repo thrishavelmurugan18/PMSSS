@@ -3,8 +3,13 @@ import "../styles/studentDashboard.css";
 import backIcon from "../assets/back.png";
 import logoutIcon from "../assets/logout.png";
 
-export default function StudentDashboard() {
+export default function StudentDashboard({ onLogout }) {
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    onLogout();      // clear role
+    navigate("/");  // go to login page
+  };
 
   return (
     <div className="dashboard-page">
@@ -31,7 +36,7 @@ export default function StudentDashboard() {
               <span className="badge">3</span>
             </div>
 
-            <div className="logout-btn" onClick={() => navigate("/login")}>
+            <div className="logout-btn" onClick={handleLogout}>
               <img src={logoutIcon} alt="Logout" />
               <span>Logout</span>
             </div>
@@ -51,7 +56,7 @@ export default function StudentDashboard() {
           <button>Documents</button>
         </div>
 
-        {/* APPLICATION 1 */}
+        {/* APPLICATION CARDS */}
         <div className="application-card">
           <div className="left">
             <h3>
@@ -72,7 +77,6 @@ export default function StudentDashboard() {
           </div>
         </div>
 
-        {/* APPLICATION 2 */}
         <div className="application-card">
           <div className="left">
             <h3>
@@ -93,7 +97,6 @@ export default function StudentDashboard() {
           </div>
         </div>
 
-        {/* APPLICATION 3 */}
         <div className="application-card">
           <div className="left">
             <h3>

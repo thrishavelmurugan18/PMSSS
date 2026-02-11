@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 
 import LoginPage from "./components/LoginPage";
+import SignupPage from "./components/SignupPage";
 import HomePage from "./components/HomePage";
 import StudentDashboard from "./components/StudentDashboard";
 import AdminDashboard from "./components/AdminDashboard";
@@ -11,12 +12,21 @@ import Helpdesk from "./components/Helpdesk";
 export default function App() {
   const [currentRole, setCurrentRole] = useState(null); // "student" | "admin"
 
+  const handleLogout = () => {
+    setCurrentRole(null);
+  };
+
   return (
     <BrowserRouter>
       <Routes>
 
-        {/* LOGIN */}
-        <Route path="/" element={<LoginPage setCurrentRole={setCurrentRole} />} />
+        {/* AUTH */}
+        <Route
+          path="/"
+          element={<LoginPage setCurrentRole={setCurrentRole} />}
+        />
+
+        <Route path="/signup" element={<SignupPage />} />
 
         {/* STUDENT ROUTES */}
         <Route
@@ -29,7 +39,11 @@ export default function App() {
         <Route
           path="/student-dashboard"
           element={
-            currentRole === "student" ? <StudentDashboard /> : <Navigate to="/" />
+            currentRole === "student" ? (
+              <StudentDashboard onLogout={handleLogout} />
+            ) : (
+              <Navigate to="/" />
+            )
           }
         />
 
@@ -51,7 +65,11 @@ export default function App() {
         <Route
           path="/admin-dashboard"
           element={
-            currentRole === "admin" ? <AdminDashboard /> : <Navigate to="/" />
+            currentRole === "admin" ? (
+              <AdminDashboard onLogout={handleLogout} />
+            ) : (
+              <Navigate to="/" />
+            )
           }
         />
 

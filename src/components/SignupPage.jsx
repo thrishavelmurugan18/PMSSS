@@ -1,20 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import "../styles/auth.css";
-import view from "../assets/visible.png";
-import hide from "../assets/hide.png";
 
-export default function LoginPage({ setCurrentRole }) {
+export default function SignupPage() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
+    confirmPassword: "",
     role: "student",
   });
 
-  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -24,22 +22,25 @@ export default function LoginPage({ setCurrentRole }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.email || !formData.password) {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.password ||
+      !formData.confirmPassword
+    ) {
       setError("Please fill in all fields");
       return;
     }
 
-    setError("");
-
-    // Save role globally
-    setCurrentRole(formData.role);
-
-    // 🔴 THIS IS THE IMPORTANT FIX
-    if (formData.role === "student") {
-      navigate("/home");                 // Student → Home page
-    } else if (formData.role === "admin") {
-      navigate("/admin-dashboard");      // Admin → Admin Dashboard
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
     }
+
+    setError("");
+    console.log("Signup data:", formData);
+
+    navigate("/");
   };
 
   return (
@@ -48,15 +49,22 @@ export default function LoginPage({ setCurrentRole }) {
 
         <div className="auth-header">
           <h1>🎓 PMSSS Portal</h1>
-          <p>Paperless Scholarship Management System</p>
+          <p>Create a new account</p>
         </div>
-
-        <h2 className="auth-title">Welcome Back</h2>
-        <p className="auth-subtitle">Log in to continue</p>
 
         <form onSubmit={handleSubmit}>
 
-          {/* ROLE SELECT */}
+          <div className="auth-group">
+            <label>Full Name</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
+
           <div className="auth-group">
             <label>I am a</label>
             <select
@@ -69,7 +77,6 @@ export default function LoginPage({ setCurrentRole }) {
             </select>
           </div>
 
-          {/* EMAIL */}
           <div className="auth-group">
             <label>Email</label>
             <input
@@ -81,43 +88,42 @@ export default function LoginPage({ setCurrentRole }) {
             />
           </div>
 
-          {/* PASSWORD */}
           <div className="auth-group">
             <label>Password</label>
-            <div className="password-wrapper">
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="••••••"
-                value={formData.password}
-                onChange={handleChange}
-              />
-              <button
-                type="button"
-                className="password-toggle"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                <img src={showPassword ? hide : view} alt="Toggle" />
-              </button>
-            </div>
+            <input
+              type="password"
+              name="password"
+              placeholder="••••••"
+              value={formData.password}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="auth-group">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="••••••"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+            />
           </div>
 
           {error && <div className="auth-error">{error}</div>}
 
           <button className="auth-btn" type="submit">
-            🔐 Login In
+            ✨ Sign Up
           </button>
         </form>
 
         <div className="auth-links">
-          <a href="#">Forgot password?</a>
-          <br></br>
-          <a
+          <button
             className="link-btn"
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/")}
           >
-            New user? Sign up
-          </a>
+            Already have an account? Sign in
+          </button>
         </div>
 
       </div>
